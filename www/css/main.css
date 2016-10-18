@@ -1,0 +1,303 @@
+/*
+###################################################
+#                                                 #
+#      Main Stylus CSS File for Mobile App        #
+#                                                 #
+#      Author: C. Stephens                        #
+#                                                 #
+#      Date Created: 27th July 2016               #
+#                                                 #
+#      Last Modified: 27th July 2016              #
+#                                                 #
+#	   Merges style.styl and dtstyle.styl         #
+#                                                 #
+###################################################
+*/
+/* nib */
+/* variables */
+/* mixins */
+/* media queries */
+/* older smart phones */
+@media screen and (max-width: 480px) {
+  body {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    font: 18pt "Lucida Grande", Helvetica, Arial, sans-serif;
+    line-height: 1.8;
+  }
+}
+/* tablets */
+@media screen and (max-width: 1024px) {
+  body {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    font: 16pt "Lucida Grande", Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+  }
+}
+/* Desktops */
+@media screen and (min-width: 1025px) {
+  body {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    font: 16pt "Lucida Grande", Helvetica, Arial, sans-serif;
+    line-height: 1.2;
+  }
+}
+/* general page styles */
+html {
+  margin: 0px;
+  padding: 0px;
+}
+a {
+  color: #00b7ff;
+}
+.head {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: #013445;
+  color: #fff;
+  font-size: 18pt;
+  min-height: 4em;
+  width: 100%;
+  text-align: center;
+  padding-bottom: 2em;
+}
+.footer {
+  position: relative;
+  top: 15em;
+  background-color: #013445;
+  color: #fff;
+  font-size: 14pt;
+  font-weight: bold;
+  padding-top: 1.5em;
+}
+.themeButton {
+  -webkit-box-shadow: 2px 2px 10px 2px rgba(170,170,170,0.75);
+  box-shadow: 2px 2px 10px 2px rgba(170,170,170,0.75);
+  width: 10em;
+}
+/* utility layout styles */
+.red {
+  background-color: #f00;
+  color: #0f0;
+}
+.padded {
+  padding: 1.875rem;
+}
+.spaced {
+  line-height: 2.8;
+}
+/* utility debug styles */
+.ui-loader {
+  display: none;
+}
+.hidden {
+  display: none;
+}
+.dotted {
+  border: 1px dotted #f00;
+}
+#bk_photogs {
+  background-color: #fff;
+  color: #000;
+  all: initial;
+}
+#bk_photogs * {
+  all: unset;
+}
+#diary_today {
+  position: relative;
+  top: 3em;
+  margin: 2em;
+  color: #333;
+}
+/* Accordion Styles */
+button.accordion {
+  background-color: #ccc;
+  color: #333;
+  font-size: 16pt;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: 0;
+  border-top: 1px solid #777;
+  border-left: 1px solid #777;
+  border-right: 1px solid #777;
+  text-align: left;
+  outline: none;
+  font-size: 16pt;
+  -webkit-transition: 0.4s;
+  -moz-transition: 0.4s;
+  -o-transition: 0.4s;
+  -ms-transition: 0.4s;
+  transition: 0.4s;
+  -webkit-border-radius: 0px;
+  border-radius: 0px;
+}
+#settings {
+  border-bottom: 1px solid #777;
+}
+.accordion img {
+  margin-right: 2em;
+}
+button.accordion.active,
+button.accordion:hover {
+  background-color: #eee;
+}
+div.panel {
+  display: none;
+  background-color: #fff;
+  color: #333;
+  border-left: 1px solid #777;
+  border-right: 1px solid #777;
+}
+div.panel.show {
+  padding: 1.5em;
+  margin-bottom: 2px;
+  text-align: left;
+  display: block !important;
+}
+button.contact {
+  background-color: #ccc;
+  border: 1px solid #777;
+  padding: 1em;
+  font-size: 14pt;
+  font-weight: bold;
+  margin: 0.5em;
+  cursor: pointer;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-box-shadow: 2px 2px 10px 2px rgba(170,170,170,0.3);
+  box-shadow: 2px 2px 10px 2px rgba(170,170,170,0.3);
+}
+button.contact:hover {
+  background-color: #eee;
+}
+.call_buttons {
+  padding-bottom: 2em;
+}
+.badges {
+  padding: 1em;
+  position: relative;
+  top: 3.5em;
+  height: auto;
+  min-height: 3em;
+  background-color: #ccc;
+  color: #333;
+}
+.iconText {
+  margin-left: 1em;
+  font-size: 12pt;
+  font-weight: bold;
+}
+.userTitle {
+  margin-left: 1em;
+  font-size: 12pt;
+  font-weight: bold;
+  display: block;
+}
+.userName {
+  margin-left: 1em;
+  font-size: 12pt;
+  color: #777;
+  display: block;
+}
+.lefty {
+  margin-right: 0.5em;
+  float: left;
+  clear: right;
+}
+/* Forms styling */
+.formtable select,
+.formtable input,
+.formtable textarea {
+  width: 15em;
+}
+select option {
+  background-color: #fff;
+  color: #000;
+}
+.formtable button {
+  padding: 0.35em;
+  background-color: #333;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  font-weight: bold;
+  color: #fff;
+}
+.formtable {
+  border: 1px solid #333;
+  margin-bottom: 20px;
+  width: 100%;
+  height: auto;
+}
+.formtable td {
+  padding: 0.5em;
+  background-color: #fff;
+}
+.formtable th {
+  padding: 0.75em;
+  background-color: #777;
+  color: #fff;
+}
+.small {
+  font-size: 10pt;
+}
+.formtable span {
+  display: none !important;
+}
+/* Tabs Styling */
+.main-content {
+  position: relative;
+  top: 5em;
+  width: 100%;
+  height: 20em;
+  margin: 0 auto;
+}
+ul.tabs {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+}
+ul.tabs li {
+  background: none;
+  color: #222;
+  display: inline-block;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+ul.tabs li.current {
+  background: #ededed;
+  color: #222;
+}
+.tab-content {
+  display: none;
+  background: #ededed;
+  padding: 15px;
+  height: auto;
+  min-height: 25em;
+}
+.tab-content.current {
+  display: block;
+}
+#tlyPageGuide {
+  display: none;
+}
+.heading {
+  background-color: #ccc;
+  margin: 0 auto;
+  margin-bottom: 3.125rem;
+  border: 2px solid #777;
+  -webkit-border-radius: 1.25rem;
+  border-radius: 1.25rem;
+  padding: 1.25rem;
+}

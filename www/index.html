@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <meta http-equiv="Content-Security-Policy" content="default-src *  data: gap: 'unsafe-inline' 'unsafe-eval' https://ssl.gstatic.com; style-src * 'unsafe-inline'; media-src *">
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <link rel="stylesheet" href="./css/jquery-ui.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/jquery.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/underscore.js"></script>
+    <script src="./js/jquery-ui.js" type="text/javascript"></script>
+    <title>Google Mapping and Routing</title>
+  </head>
+</html>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="heading">
+        <h1>Google Mapping and Routing</h1>
+      </div>
+      <div id="feedback"></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <div id="directions" class="text-center">
+        <input id="theschool" type="hidden" name="spc" value="TR13 8NR">
+        <div id="dirs"></div>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <div id="map"></div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="./js/index.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+  	app.initialize();
+  	/* Google Maps script */
+  
+  	var directionService = "";
+  	var DirectionsRenderer = "";
+  	var myCentre = "";
+  	var marker = "";
+  	var latitude = 0;
+  	var longitude = 0;
+  
+  	if (navigator.geolocation) {
+  		navigator.geolocation.getCurrentPosition(initMap);
+  	} else {
+  		document.getElementById("feedback").innerHTML = "Geolocation is not supported by this browser.";
+  	}
+  
+  	function initMap(position) {
+  		feedback("init map fired");
+  		latitude = position.coords.latitude;
+  		longitude = position.coords.longitude;
+  		latlong = latitude + "," + longitude;
+  		myCentre = new google.maps.LatLng(latitude,longitude);
+  		directionsService = new google.maps.DirectionsService;
+  		directionsDisplay = new google.maps.DirectionsRenderer;
+  		var map = new google.maps.Map(document.getElementById('map'), {
+  			zoom: 14,
+  			center: {lat: latitude, lng: longitude},
+  			mapTypeId:google.maps.MapTypeId.ROADMAP
+  		});
+  		marker = new google.maps.Marker({
+  		    position: myCentre,
+  		    title: 'Your current position'
+  		});
+  		
+  		directionsDisplay.setMap(map);
+  		document.getElementById('dirs').innerHTML = "";
+  		var panel = document.getElementById('dirs');
+  		directionsDisplay.setPanel(panel);		
+  		marker.setMap(map);
+  
+  		var end = document.getElementById('theschool').value;
+  		calculateAndDisplayRoute(directionsService, directionsDisplay, myCentre, marker, end);
+  	}
+  	
+  	function loadMap() {
+  		feedback("loadmap fired");
+  		if (navigator.geolocation) {
+  			navigator.geolocation.getCurrentPosition(initMap);
+  		} else {
+  			document.getElementById("feedback").innerHTML = "Geolocation is not supported by this browser.";
+  		}
+  	}
+  
+  	function feedback(message){
+  		/* disabled after debugging */
+  		/*console.log(message);*/
+  		/* document.getElementById("feedback").innerHTML = message; */
+  	}
+  
+  	function calculateAndDisplayRoute(directionsService, directionsDisplay, myStart, marker, end) {
+  		marker.setMap(null);
+  		directionsService.route({
+  			origin: myStart,
+  			destination: end,
+  			travelMode: google.maps.TravelMode.DRIVING
+  		}, function(response, status) {
+  			feedback("calc route ok");
+  			if (status === google.maps.DirectionsStatus.OK) {
+  
+  				directionsDisplay.setDirections(response);
+  			} else {
+  				feedback('Directions request failed due to ' + status);
+  			}
+  		});
+  	}
+  });
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALvTff6jTscOGaURAC-wwjLSylq4HlObk&amp;amp;callback=initMap"></script>
